@@ -28,7 +28,12 @@ MODELS=(
 )
 
 OUTFILE="gemma3_mem_usage.csv"
-echo "model,gpu_memory_mib" > "$OUTFILE"
+
+# Get GPU model name
+GPU_MODEL=$(nvidia-smi --query-gpu=name --format=csv,noheader | head -n1)
+
+# Write CSV header
+echo "model,gpu_memory_mib,gpu_model" > "$OUTFILE"
 
 check_gpu_empty_or_wait() {
   ATTEMPTS=0
@@ -51,8 +56,6 @@ check_gpu_empty_or_wait() {
 
 for MODEL in "${MODELS[@]}"; do
   echo "===================================================="
-  # echo "[START] Cleaning up leftover ollama processes..."
-  # sudo pkill -9 ollama || true
   echo "[INFO] Starting test for model: $MODEL"
 
   # Ensure GPU is free before starting
@@ -60,7 +63,6 @@ for MODEL in "${MODELS[@]}"; do
 
   # Run model once and show logs (download / load progress)
   echo "[INFO] Running: ollama run $MODEL (logs visible)"
-  # Single-shot prompt, output visible so downloads/loading can be seen
   ollama run "$MODEL" <<< "Hello world"
 
   # Give it time to allocate memory
@@ -69,8 +71,8 @@ for MODEL in "${MODELS[@]}"; do
   # Measure GPU memory
   MEM=$(nvidia-smi --query-compute-apps=used_memory --format=csv,noheader,nounits | sort -nr | head -n1)
   if [ -z "$MEM" ]; then MEM=0; fi
-  echo "[RESULT] $MODEL uses ${MEM} MiB of GPU memory"
-  echo "$MODEL,$MEM" >> "$OUTFILE"
+  echo "[RESULT] $MODEL uses ${MEM} MiB of GPU memory on $GPU_MODEL"
+  echo "$MODEL,$MEM,$GPU_MODEL" >> "$OUTFILE"
 
   # Stop the model explicitly
   echo "[INFO] Stopping model: $MODEL"
