@@ -32,8 +32,10 @@ OUTFILE="gemma3_mem_usage.csv"
 # Get GPU model name
 GPU_MODEL=$(nvidia-smi --query-gpu=name --format=csv,noheader | head -n1)
 
-# Write CSV header
-echo "model,gpu_memory_mib,gpu_model" > "$OUTFILE"
+# If CSV does not exist, write header
+if [ ! -f "$OUTFILE" ]; then
+    echo "model,gpu_memory_mib,gpu_model" > "$OUTFILE"
+fi
 
 check_gpu_empty_or_wait() {
   ATTEMPTS=0

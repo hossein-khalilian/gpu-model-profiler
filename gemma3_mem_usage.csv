@@ -1,23 +1,25 @@
-model,gpu_memory_mib
-gemma3:270m,798
-gemma3:270m-it-qat,752
-gemma3:270m-it-q8_0,798
-gemma3:270m-it-fp16,994
-gemma3:1b,1300
-gemma3:1b-it-qat,1488
-gemma3:1b-it-q4_K_M,1300
-gemma3:1b-it-q8_0,1552
-gemma3:1b-it-fp16,2406
-gemma3:4b,5066
-gemma3:4b-it-qat,5712
-gemma3:4b-it-q4_K_M,5066
-gemma3:4b-it-q8_0,6632
-gemma3:4b-it-fp16,10058
-gemma3:12b,10086
-gemma3:12b-it-qat,10842
-gemma3:12b-it-q4_K_M,10086
-gemma3:12b-it-q8_0,15058
-gemma3:12b-it-fp16,21858
-gemma3:27b,19118
-gemma3:27b-it-qat,19790
-gemma3:27b-it-q4_K_M,19118
+model,gpu_memory_mib,gpu_model
+gemma3:270m,798,NVIDIA GeForce RTX 4090
+gemma3:270m-it-qat,752,NVIDIA GeForce RTX 4090
+gemma3:270m-it-q8_0,798,NVIDIA GeForce RTX 4090
+gemma3:270m-it-fp16,994,NVIDIA GeForce RTX 4090
+gemma3:1b,1302,NVIDIA GeForce RTX 4090
+gemma3:1b-it-qat,1490,NVIDIA GeForce RTX 4090
+gemma3:1b-it-q4_K_M,1300,NVIDIA GeForce RTX 4090
+gemma3:1b-it-q8_0,1552,NVIDIA GeForce RTX 4090
+gemma3:1b-it-fp16,2404,NVIDIA GeForce RTX 4090
+gemma3:4b,5066,NVIDIA GeForce RTX 4090
+gemma3:4b-it-qat,5712,NVIDIA GeForce RTX 4090
+gemma3:4b-it-q4_K_M,5066,NVIDIA GeForce RTX 4090
+gemma3:4b-it-q8_0,6632,NVIDIA GeForce RTX 4090
+gemma3:4b-it-fp16,10058,NVIDIA GeForce RTX 4090
+gemma3:12b,10086,NVIDIA GeForce RTX 4090
+gemma3:12b-it-qat,10842,NVIDIA GeForce RTX 4090
+gemma3:12b-it-q4_K_M,10086,NVIDIA GeForce RTX 4090
+gemma3:12b-it-q8_0,15058,NVIDIA GeForce RTX 4090
+gemma3:12b-it-fp16,21858,NVIDIA GeForce RTX 4090
+gemma3:27b,19118,NVIDIA GeForce RTX 4090
+gemma3:27b-it-qat,19790,NVIDIA GeForce RTX 4090
+gemma3:27b-it-q4_K_M,19118,NVIDIA GeForce RTX 4090
+gemma3:27b-it-q8_0,21572,NVIDIA GeForce RTX 4090
+gemma3:27b-it-fp16,20772,NVIDIA GeForce RTX 4090
